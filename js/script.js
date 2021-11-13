@@ -302,10 +302,21 @@ const authorClickHandler = (evt) => {
 	}
 };
 
+const moreLinkClickHandler = (evt) => {
+	const element = evt.target.closest('a.more');
+
+	if (!element) {
+		return;
+	}
+	evt.preventDefault();
+
+};
+
 const init = () => {
 	render();
 
 	authorsContainer.addEventListener('click', authorClickHandler);
+	booksContainer.addEventListener('click', moreLinkClickHandler);
 };
 
 init();
