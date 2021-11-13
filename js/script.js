@@ -208,6 +208,12 @@ const navContainer = document.querySelector('.site-nav');
 const authorsContainer = document.querySelector('.authors');
 const booksContainer = document.querySelector('.books');
 
+const addChildElementsFromString = (parent, domString) => {
+	parent.innerHTML = '';
+	// добавляем разобранный текст как HTML перез закрывающим тегом родительского элемента (после последнего потомка)
+	parent.insertAdjacentHTML('beforeend', domString);
+};
+
 const createNavItemString = ({key, items}) =>
   `<li class="site-nav-item">
     <a class="site-nav-link" ${items.length > 0 ? `href="#${key}"` : ''} >${key}</a>
@@ -259,23 +265,13 @@ const createAuthorBooksString = ({author, books}) =>
 	`;
 
 const render = () => {
-  navContainer.innerHTML = '';
-
-  const navElementsString = authors.map((item) => createNavItemString(item)).join('');
-
-  navContainer.insertAdjacentHTML('beforeend', navElementsString);
-
-  authorsContainer.innerHTML = '';
-
+   const navElementsString = authors.map((item) => createNavItemString(item)).join('');
   const authorsElementsString = authors.map((item) => createSectionString(item)).join('');
-
-  authorsContainer.insertAdjacentHTML('beforeend', authorsElementsString);
-
-  booksContainer.innerHTML = '';
-
   const emptyBookElementString = createEmptyBookString();
 
-  booksContainer.insertAdjacentHTML('beforeend', emptyBookElementString);
+  addChildElementsFromString(navContainer, navElementsString);
+  addChildElementsFromString(authorsContainer, authorsElementsString);
+  addChildElementsFromString(booksContainer, emptyBookElementString);
 }
 
 const authorClickHandler = (evt) => {
@@ -296,8 +292,8 @@ const authorClickHandler = (evt) => {
 		if (currentAuthor) {
 			const booksString = createAuthorBooksString(currentAuthor);
 		
-			booksContainer.innerHTML = '';
-			booksContainer.insertAdjacentHTML('beforeend', booksString);
+			addChildElementsFromString(booksContainer, booksString);
+			setAuthorActive(element);
 		}
 	}
 };
