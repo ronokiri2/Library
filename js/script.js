@@ -206,11 +206,20 @@ const authors = [
 
 const navContainer = document.querySelector('.site-nav');
 
+const createNavItemString = ({key, items}) =>
+  `<li class="site-nav-item">
+    <a class="site-nav-link" ${items.length > 0 ? `href="#${key}"` : ''} >${key}</a>
+    </li>
+  `;
+
 const render = () => {
-	navContainer.innerHTML = '';
+  navContainer.innerHTML = '';
+
+const navElementsString = authors.map((item) => createNavItemString(item)).join('');
 }
 
 const init = () => {
+  render();
 };
 
 init();
