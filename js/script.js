@@ -319,11 +319,21 @@ const moreLinkClickHandler = (evt) => {
 	}
 };
 
+const navItemsClickHandler = (evt) => {
+	const element = evt.target.closest('a');
+
+	if (!element) {
+		return;
+	}
+	evt.preventDefault();
+};
+
 const init = () => {
 	render();
 
 	authorsContainer.addEventListener('click', authorClickHandler);
 	booksContainer.addEventListener('click', moreLinkClickHandler);
+	navContainer.addEventListener('click', navItemClickHandler);
 };
 
 init();
