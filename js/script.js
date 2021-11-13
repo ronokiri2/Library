@@ -210,7 +210,7 @@ const booksContainer = document.querySelector('.books');
 
 const addChildElementsFromString = (parent, domString) => {
 	parent.innerHTML = '';
-	// добавляем разобранный текст как HTML перез закрывающим тегом родительского элемента (после последнего потомка)
+	// добавляем разобранный текст как HTML перед закрывающим тегом родительского элемента (после последнего потомка)
 	parent.insertAdjacentHTML('beforeend', domString);
 };
 
@@ -265,8 +265,8 @@ const createAuthorBooksString = ({author, books}) =>
 	`;
 
 const render = () => {
-   const navElementsString = authors.map((item) => createNavItemString(item)).join('');
-  const authorsElementsString = authors.map((item) => createSectionString(item)).join('');
+   const navElementsString = authors.map(createNavItemString).join('');
+  const authorsElementsString = authors.map(createSectionString).join('');
   const emptyBookElementString = createEmptyBookString();
 
   addChildElementsFromString(navContainer, navElementsString);
