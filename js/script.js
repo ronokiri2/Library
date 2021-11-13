@@ -205,6 +205,7 @@ const authors = [
 ];
 
 const navContainer = document.querySelector('.site-nav');
+const authorsContainer = document.querySelector('.authors');
 
 const createNavItemString = ({key, items}) =>
   `<li class="site-nav-item">
@@ -218,6 +219,8 @@ const render = () => {
 const navElementsString = authors.map((item) => createNavItemString(item)).join('');
 
 navContainer.insertAdjacentHTML('beforeend', navElementsString);
+
+authorsContainer.innerHTML = '';
 }
 
 const init = () => {
