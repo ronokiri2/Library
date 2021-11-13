@@ -326,6 +326,19 @@ const navItemsClickHandler = (evt) => {
 		return;
 	}
 	evt.preventDefault();
+
+	const blockId = element.getAttribute('href');
+
+	if (blockId && blockId !== '#') {
+		const block = document.querySelector(blockId);
+
+		if (block) {
+			block.scrollIntoView({
+				behavior: 'smooth',
+				block: 'start',
+			});
+		}
+	}
 };
 
 const init = () => {
@@ -333,7 +346,7 @@ const init = () => {
 
 	authorsContainer.addEventListener('click', authorClickHandler);
 	booksContainer.addEventListener('click', moreLinkClickHandler);
-	navContainer.addEventListener('click', navItemClickHandler);
+	navContainer.addEventListener('click', navItemsClickHandler);
 };
 
 init();
