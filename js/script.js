@@ -206,6 +206,7 @@ const authors = [
 
 const navContainer = document.querySelector('.site-nav');
 const authorsContainer = document.querySelector('.authors');
+const booksContainer = document.querySelector('.books');
 
 const createNavItemString = ({key, items}) =>
   `<li class="site-nav-item">
@@ -232,6 +233,11 @@ const createSectionString = ({key, items}) =>
     </section>
   `;
 
+const createEmptyBookString = () =>
+	`<h2>Книги</h2>
+	 <p>Нажмите на автора, чтобы посмотреть список его книг</p>
+	`;
+
 const render = () => {
   navContainer.innerHTML = '';
 
@@ -244,6 +250,12 @@ const render = () => {
   const authorsElementsString = authors.map((item) => createSectionString(item)).join('');
 
   authorsContainer.insertAdjacentHTML('beforeend', authorsElementsString);
+
+  booksContainer.innerHTML = '';
+
+  const emptyBookElementString = createEmptyBookString();
+
+  booksContainer.insertAdjacentHTML('beforeend', emptyBookElementString);
 }
 
 const init = () => {
