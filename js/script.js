@@ -204,6 +204,12 @@ const authors = [
   },
 ];
 
+const navContainer = document.querySelector('.site-nav');
+
+const render = () => {
+	navContainer.innerHTML = '';
+}
+
 const init = () => {
 };
 
