@@ -238,6 +238,26 @@ const createEmptyBookString = () =>
 	 <p>Нажмите на автора, чтобы посмотреть список его книг</p>
 	`;
 
+const createAuthorBooksString = ({author, books}) =>
+	`<h2>${author}</h2>
+		<ul class="book-list">
+			${books.map(({title, year, img, price, summary}) => `
+			<li class="author-item">
+				<article class="book">
+					<img src="img/${img}" width="95" height="130" alt="${title}">
+					<div class="title-wrapper">
+						<h3>${title}</h3>
+						<p class="year">${year}</p>
+					</div>
+					<p class="price">${price} <a class="cart" href="#">Купить</a></p>
+					<p class="description short">${summary}</p>
+					<a class="more" href="#">Читать дальше</a>
+				</article>
+			</li>
+		`).join('')}
+		</ul>
+	`;
+
 const render = () => {
   navContainer.innerHTML = '';
 
