@@ -213,14 +213,34 @@ const createNavItemString = ({key, items}) =>
     </li>
   `;
 
+const createSectionString = ({key, items}) =>
+  `<section class="authors-section">
+      <h2 id="${key}">${key}</h2>
+      <ul class="author-list">
+        ${items.map(({author, books}) => `
+      <li class="author-item">
+        <a class="author-link" data-value="${author}" href="#">
+          <h3>${author}</h3>
+          <p>${books.length} книги</p>
+        </a>
+      </li>
+        `).join('')}
+      </ul>
+    </section>
+  `;
+
 const render = () => {
   navContainer.innerHTML = '';
 
-const navElementsString = authors.map((item) => createNavItemString(item)).join('');
+  const navElementsString = authors.map((item) => createNavItemString(item)).join('');
 
-navContainer.insertAdjacentHTML('beforeend', navElementsString);
+  navContainer.insertAdjacentHTML('beforeend', navElementsString);
 
-authorsContainer.innerHTML = '';
+  authorsContainer.innerHTML = '';
+
+  const authorsElementsString = authors.map((item) => createSectionString(item)).join('');
+
+  authorsContainer.insertAdjacentHTML('beforeend', authorsElementsString);
 }
 
 const init = () => {
