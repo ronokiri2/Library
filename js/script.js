@@ -217,14 +217,17 @@ const createSectionString = ({key, items}) =>
   `<section class="authors-section">
       <h2 id="${key}">${key}</h2>
       <ul class="author-list">
-        ${items.map(({author, books}) => `
+        ${items.map(({author, books}) => {
+	const declension = window.getDeclension({count: books.length, one: 'книга', few: 'книги', many: 'книг'});
+	return `
       <li class="author-item">
         <a class="author-link" data-value="${author}" href="#">
           <h3>${author}</h3>
-          <p>${books.length} книги</p>
+          <p>${declension}</p>
         </a>
       </li>
-        `).join('')}
+    `;
+   }).join('')}
       </ul>
     </section>
   `;
