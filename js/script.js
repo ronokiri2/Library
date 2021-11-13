@@ -310,6 +310,13 @@ const moreLinkClickHandler = (evt) => {
 	}
 	evt.preventDefault();
 
+	const bookContainer = element.closest('.book');
+	const descriptionElement = bookContainer.querySelector('.description');
+
+	if (descriptionElement) {
+		descriptionElement.classList.toggle('short');
+		element.textContent = descriptionElement.classList.contains('short') ? 'Читать дальше' : 'Скрыть описание';
+	}
 };
 
 const init = () => {
