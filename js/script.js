@@ -286,6 +286,20 @@ const authorClickHandler = (evt) => {
 	}
 	evt.preventDefault();
 
+	const value = element.dataset.value;
+
+	const authorsGroup = authors.find(({key}) => value.toUpperCase().indexOf(key.toUpperCase()) === 0);
+	
+	if (authorsGroup && authorsGroup.items) {
+		const currentAuthor = authorsGroup.items.find((item) => item.author === value);
+
+		if (currentAuthor) {
+			const booksString = createAuthorBooksString(currentAuthor);
+		
+			booksContainer.innerHTML = '';
+			booksContainer.insertAdjacentHTML('beforeend', booksString);
+		}
+	}
 };
 
 const init = () => {
