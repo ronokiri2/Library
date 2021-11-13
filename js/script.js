@@ -1,3 +1,5 @@
+'use strict';
+
 /* Тестовые данные */
 
 const authors = [
@@ -201,3 +203,8 @@ const authors = [
     items: [],
   },
 ];
+
+const init = () => {
+};
+
+init();
