@@ -282,7 +282,7 @@ const authorClickHandler = (evt) => {
 	}
 	evt.preventDefault();
 
-	const value = element.dataset.value;
+	const {value} = element.dataset;
 
 	const authorsGroup = authors.find(({key}) => value.toUpperCase().indexOf(key.toUpperCase()) === 0);
 	
