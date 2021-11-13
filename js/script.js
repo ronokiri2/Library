@@ -258,8 +258,20 @@ const render = () => {
   booksContainer.insertAdjacentHTML('beforeend', emptyBookElementString);
 }
 
+const authorClickHandler = (evt) => {
+	const element = evt.target.closest('a');
+
+	if (!element) {
+		return;
+	}
+	evt.preventDefault();
+
+};
+
 const init = () => {
-  render();
+	render();
+
+	authorsContainer.addEventListener('click', authorClickHandler);
 };
 
 init();
