@@ -216,6 +216,8 @@ const render = () => {
   navContainer.innerHTML = '';
 
 const navElementsString = authors.map((item) => createNavItemString(item)).join('');
+
+navContainer.insertAdjacentHTML('beforeend', navElementsString);
 }
 
 const init = () => {
